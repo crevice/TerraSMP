@@ -1,0 +1,17 @@
+main: ru.ya1.minecraft.terrasmp.TerraSMP
+name: TerraSMP
+version: 0.5
+author: xtend
+description: "Something very cool"
+softdepend: [Residence]
+commands:
+  status:
+    description: "Display Statistics"
+    usage: /status
+  rents:
+    description: "Display Rents"
+    usage: /rents name days
+  debug:
+    description: "Admin Command, display stats."
+    permission: terrasmp.debug
+    usage: /debug
