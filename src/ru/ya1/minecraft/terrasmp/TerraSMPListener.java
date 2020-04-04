@@ -26,7 +26,7 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
 
 public class TerraSMPListener implements Listener{
-	private static List<Material> hotFood = Arrays.asList(Material.COOKED_BEEF,Material.COOKED_CHICKEN,Material.COOKED_FISH,Material.GRILLED_PORK,Material.BAKED_POTATO);
+	private static List<Material> hotFood = Arrays.asList(Material.COOKED_BEEF,Material.COOKED_CHICKEN,Material.COOKED_COD,Material.COOKED_MUTTON,Material.BAKED_POTATO,Material.COOKED_MUTTON,Material.COOKED_PORKCHOP,Material.COOKED_RABBIT,Material.COOKED_SALMON);
 	@EventHandler
 	public void onHealthChange(EntityRegainHealthEvent event){
 		if ((event.getEntity() instanceof Player)){
@@ -88,7 +88,7 @@ public class TerraSMPListener implements Listener{
 						long timestamp = System.currentTimeMillis()/1000;
 						TerraSMPPlayer.setBleeding(name, true);
 						TerraSMPPlayer.setSickness(name, TerraSMPPlayer.getSickness(name)+50);
-						TerraSMPThread.sendStatusMessage(plr, "§c* У вас кровотечение.","bleeding",timestamp,60);
+						TerraSMPThread.sendStatusMessage(plr, "В§c* РЈ РІР°СЃ РєСЂРѕРІРѕС‚РµС‡РµРЅРёРµ.","bleeding",timestamp,60);
 					}
 				}
 			}
@@ -96,7 +96,7 @@ public class TerraSMPListener implements Listener{
 				if(event.getDamage() >= 8){
 					long timestamp = System.currentTimeMillis()/1000;
 					TerraSMPPlayer.setLegBroken(name, true);
-					TerraSMPThread.sendStatusMessage(plr, "§c* Вы сломали ногу.","broken",timestamp,60);
+					TerraSMPThread.sendStatusMessage(plr, "В§c* Р’С‹ СЃР»РѕРјР°Р»Рё РЅРѕРіСѓ.","broken",timestamp,60);
 				}
 			}
 		}
@@ -128,7 +128,7 @@ public class TerraSMPListener implements Listener{
 			boolean success 	= false;
 			if(item.getType() == Material.STICK && item.getDurability() == 8){
 				if(TerraSMPPlayer.isLegBroken(name)){
-					plr.sendMessage("§a* Вы наложили шину на сломанную ногу.");
+					plr.sendMessage("В§a* Р’С‹ РЅР°Р»РѕР¶РёР»Рё С€РёРЅСѓ РЅР° СЃР»РѕРјР°РЅРЅСѓСЋ РЅРѕРіСѓ.");
 					plr.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 900, 0));
 					TerraSMPPlayer.setLegBroken(name, false);
 					success = true;
@@ -136,7 +136,7 @@ public class TerraSMPListener implements Listener{
 			}
 			if(item.getType() == Material.PAPER && item.getDurability() == 8){
 				if(TerraSMPPlayer.isBleeding(name)){
-					plr.sendMessage("§a* Вы перевязали рану.");
+					plr.sendMessage("В§a* Р’С‹ РїРµСЂРµРІСЏР·Р°Р»Рё СЂР°РЅСѓ.");
 					TerraSMPPlayer.setBleeding(name, false);
 					success = true;
 				}
@@ -158,15 +158,15 @@ public class TerraSMPListener implements Listener{
 				 if(saturation < 3600){
 					List<Block> lineOfSight = event.getPlayer().getLineOfSight(null, 5);
 					 for (Block b : lineOfSight) {
-						 if (b.getType() == Material.STATIONARY_WATER || b.getType() == Material.WATER) {
+						 if (b.getType() == Material.WATER) {
 								TerraSMPPlayer.setSaturation(name, saturation + 200);
 								int addsick = 10 + (int)(Math.random() * ((70 - 10) + 1));
 								if(plr.getLocation().getY() < 45){
 									addsick = 10 + (int)(Math.random() * ((20 - 10) + 1));
 								}
 								TerraSMPPlayer.setSickness(name, sickness + addsick);
-								plr.sendMessage("§b* Вы выпили немного воды из источника.");
-								plr.getWorld().playSound(event.getClickedBlock().getLocation(), Sound.SPLASH, 1, 2);
+								plr.sendMessage("В§b* Р’С‹ РІС‹РїРёР»Рё РЅРµРјРЅРѕРіРѕ РІРѕРґС‹ РёР· РёСЃС‚РѕС‡РЅРёРєР°.");
+								plr.getWorld().playSound(event.getClickedBlock().getLocation(), Sound.ENTITY_PLAYER_SPLASH, 1, 2);
 								break;
 						 }
 					 }

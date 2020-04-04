@@ -107,13 +107,13 @@ public class TerraSMPPlayer {
 	}
 	
 	public static String getStatusColor(double percent){
-		String color = "ง7";
+		String color = "ยง7";
 		if(percent >= 66){
-			color = "งa";
+			color = "ยงa";
 		}else if(percent >= 33){
-			color = "งe";
+			color = "ยงe";
 		}else{
-			color = "งc";
+			color = "ยงc";
 		}
 		return color;
 	}
@@ -138,11 +138,11 @@ public class TerraSMPPlayer {
 			break;
 			case("temperature"):
 				if(percent > 60){
-					color = "งc";
+					color = "ยงc";
 				}else if(percent < 40){
-					color = "ง7";
+					color = "ยง7";
 				}else{
-					color = "งa";
+					color = "ยงa";
 				}
 				for(int i=0; i<=percent; i++){
 					if(i > 0) percentbar+="|";

@@ -1,9 +1,9 @@
 main: ru.ya1.minecraft.terrasmp.TerraSMP
 name: TerraSMP
-version: 0.5
+version: 1.0
+api-version: 1.13
 author: xtend
 description: "Something very cool"
-softdepend: [Residence]
 commands:
   status:
     description: "Display Statistics"
